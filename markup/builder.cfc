@@ -22,9 +22,9 @@
 		this.oMarkup = createObject(this.sSyntaxPath & _sMarkUp);
 		var uMeta = getMetaData(this.oMarkup);
 
-		/* if (!structKeyExists(uMeta,"implements") || uMeta.implements.name != this.sSyntaxPath & "iMarkup"){
+		if (!structKeyExists(uMeta,"implements") || uMeta.implements.name != this.sSyntaxPath & "iMarkup"){
 			throw("Builder", "#_sType# does not implement the iMarkup", "iMarkup interface is designed to ensure all Syntax libraries implement the same formatters");
-		} */
+		}
 
 		this.clear();
 	}
