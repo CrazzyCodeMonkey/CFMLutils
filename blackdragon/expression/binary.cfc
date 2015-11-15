@@ -2,15 +2,29 @@
 
 
 this.sType													= "BINARY";
-this.oLeft													= null;
-this.oRight													= null;
-this._sOperator											= "";
+this.oOperandLeft										= null;
+this.oOperandRight									= null;
+this.sOperator											= "";
 
 
 public blackdragon.expression function init(required string _sOperator, required blackdragon.expression _oLeft, required blackdragon.expression _oRight){
-	this._sOperator = _sOperator;
-	this.oLeft = _oLeft;
-	this.oRight = _oRight;
+	this.sOperator = _sOperator;
+	this.oOperandLeft = _oLeft;
+	this.oOperandRight = _oRight;
+}
+
+
+public string function prefix( string _sDelim = " "){
+	return this.sOperator & _sDelim & this.oOperandLeft.expressionRender("prefix") & _sDelim & this.oOperandRight.expressionRender("prefix");
+}
+
+public string function postfix( string _sDelim = " "){
+	return this.oOperandLeft.expressionRender("prefix") & _sDelim & this.oOperandRight.expressionRender("prefix") & _sDelim & this.sOperator;
+}
+
+
+public string function infix( string _sDelim = " "){
+	return this.oOperandLeft.expressionRender("prefix") & _sDelim & & this.sOperator & _sDelim this.oOperandRight.expressionRender("prefix");
 }
 
 
